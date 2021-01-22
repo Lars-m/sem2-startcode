@@ -3,7 +3,6 @@ package presentation_layer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//public class ShowProtectedPage extends AuthorizeCommand{
 public class ProtectedPageCommand extends Command {
     private String role;
     private String pageToShow;

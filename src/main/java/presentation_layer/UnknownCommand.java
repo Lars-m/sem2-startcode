@@ -12,9 +12,9 @@ public class UnknownCommand extends Command {
 
     @Override
     String execute( HttpServletRequest request, HttpServletResponse response )  {
-        String msg = String.format("Unknown command! '%s'",unknownCommand);
+        String msg = String.format("Unknown Command!   '%s'",unknownCommand);
         request.setAttribute("problem",msg);
-        return "404page";
+        return Command.WAS_NOT_FOUND_COMMAND;
     }
 
 }

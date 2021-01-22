@@ -1,6 +1,6 @@
 package db_access;
 
-import function_layer.DAOException;
+import exceptions.DAOException;
 import function_layer.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,7 +28,7 @@ public class UserMapper {
         }
     }
 
-    public static User login( String email, String password ) throws DAOException {
+    public static User login( String email, String password ) throws DAOException, DataAccessException {
         try {
             Connection con = Connector.connection();
             String SQL = "SELECT id, role FROM Users "
@@ -47,7 +47,8 @@ public class UserMapper {
                 throw new DAOException( "Could not validate user" );
             }
         } catch ( ClassNotFoundException | SQLException ex ) {
-            throw new DAOException(ex.getMessage());
+            ex.printStackTrace();
+            throw new DataAccessException(ex.getMessage());
         }
     }
 

@@ -4,31 +4,41 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         <h5>Register as new User</h5>
+         Register as new User
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
+        <div style="margin-top: 5em;">
+            <form name="login" action="register" method="POST">
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="email">Email</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" name="email" placeholder="Enter a valid email">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="password1">Password</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="password" name="password1" placeholder="Enter your password">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="password2">Password</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="password" name="password2" placeholder="Repeat the password">
+                    </div>
+                </div>
 
-        <form name="register" action="register" method="POST">
-            <input type="hidden" name="target" placeholder="register">
-            Email:<br>
-            <input type="text" name="email" placeholder="somewhere.com">
-            <br>
-            Password:<br>
-            <input type="password" name="password1" placeholder="sesam">
-            <br>
-            Retype Password:<br>
-            <input type="password" name="password2" placeholder="sesam">
-            <br>
-            <input type="submit" value="Submit">
-        </form>
+                <input class="btn btn-primary" type="submit" type="submit" value="Submit">
+            </form>
 
-        <c:if test="${requestScope.userinputerror != null }">
-            <p style="color:red">
-                    ${requestScope.userinputerror}
-            </p>
-        </c:if>
+            <c:if test="${requestScope.userinputerror != null }">
+                <p style="color:red">
+                        ${requestScope.userinputerror}
+                </p>
+            </c:if>
+        </div>
     </jsp:body>
 </t:genericpage>
 

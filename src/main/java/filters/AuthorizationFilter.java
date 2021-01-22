@@ -43,7 +43,7 @@ public class AuthorizationFilter implements Filter {
                 else {
                     String role = (String) session.getAttribute("role");
                     if (role == null || !role.equals(roleFromCommand)) {
-                        handleIllegalAccess(req, res, "You tried to call a protected resource without being authorized. Please login first",403);
+                        handleIllegalAccess(req, res, "Attempt to call a resource you are not authorized to view ",403);
                         return;
                     }
 
@@ -51,7 +51,7 @@ public class AuthorizationFilter implements Filter {
             }
         }
 
-        //Prevents users, who has logged out, to use the back-button and see pages the could see, while loged in
+        //Prevents users, who has logged out, to use the back-button and see pages they could see, while logged in
         res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
         res.setHeader("Pragma", "no-cache"); // HTTP 1.0.
         res.setDateHeader("Expires", 0); // Proxies.
@@ -61,8 +61,6 @@ public class AuthorizationFilter implements Filter {
 
     private void handleIllegalAccess(HttpServletRequest req, HttpServletResponse res, String msg,int errCode) throws IOException, ServletException {
         if (FAIL_STRATEGY == FailingStrategy.REDIRECT_TO_LOGIN) {
-//            String redirectPath = String.format("%s/fc/loginpage?loginerror=%s", req.getContextPath(), msg);
-//            res.sendRedirect(redirectPath);
             req.setAttribute("loginerror",msg);
             req.getRequestDispatcher("/WEB-INF/" +"loginpage.jsp").forward(req, res);
         } else {

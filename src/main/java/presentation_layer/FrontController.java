@@ -6,7 +6,6 @@
 package presentation_layer;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,36 +15,30 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "FrontController", urlPatterns = {"/fc/*"})
 public class FrontController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         try {
             request.setCharacterEncoding("UTF-8");
             response.setCharacterEncoding("UTF-8");
+
             Command action = Command.fromPath(request);
 
             String view = action.execute(request, response);
 
-            if (view.startsWith("#*redirect*#")) {
-                //Todo add null check
-                String[] parts = view.split("_###_");
-                String page = parts[1];
+            if (view.startsWith(Command.REDIRECT_INDICATOR)) {
+                String page = view.substring(Command.REDIRECT_INDICATOR.length());
                 response.sendRedirect(page);
+                return;
+            }
+            if (view.equals(Command.WAS_NOT_FOUND_COMMAND)) {
+                response.sendError(404);
                 return;
             }
             request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
         } catch (Exception ex) {
-            ex.printStackTrace();
-            response.sendError(500);
+            ex.printStackTrace();  //Todo: add a real logging framework
+            throw ex;
         }
     }
 

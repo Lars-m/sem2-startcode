@@ -1,40 +1,35 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/styles/styles.css">
-</head>
-<body>
 
-<jsp:include page="WEB-INF/include/header.jsp">
-    <jsp:param name="pageTitle" value="Home"/>
-</jsp:include>
+<t:genericpage>
+    <jsp:attribute name="header">
+         Home
+    </jsp:attribute>
 
-<div class="content">
-    <h2>Our Cool Site</h2>
-    <c:if test="${sessionScope.user != null }">
-        <p><a href="fc/logout">logout</a></p>
-    </c:if>
-    <c:if test="${sessionScope.user == null }">
-    <p><a href="fc/loginpage">Login</a> or <a href="fc/registerpage">Register as new user</a>
-        </c:if>
+    <jsp:attribute name="footer">
+        <c:set var="addHomeButton" value="${false}" scope="request"/>
+    </jsp:attribute>
 
-        <c:if test="${sessionScope.role == 'employee' }">
-    <p><a href="fc/employeepage">Employee Page</a>
-        </c:if>
+    <jsp:body>
 
-        <c:if test="${sessionScope.role == 'customer' }">
-    <p><a href="fc/customerpage">Customer Page</a>
-        </c:if>
-</div>
+        <div>
+            <h2>Our Cool Site</h2>
 
-<div class="footer">
-    <br>
-    <br>
-    <hr>
-</div>
-</body>
+            <div style="margin-top: 3em;margin-bottom: 3em;">
+                Main page for this 2. semester start project used at chpbusiness.dk
+            </div>
 
+            <c:if test="${sessionScope.role == 'employee' }">
+            <p style="font-size: larger">This is what you can do, since your are logged in as an employee</p>
+            <p><a href="fc/employeepage">Employee Page</a>
+                </c:if>
+
+                <c:if test="${sessionScope.role == 'customer' }">
+            <p style="font-size: larger">This is what you can do, since your are logged in as a customer</p>
+            <p><a href="fc/customerpage">Customer Page</a>
+                </c:if>
+        </div>
+
+    </jsp:body>
+</t:genericpage>

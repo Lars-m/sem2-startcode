@@ -1,6 +1,6 @@
 package db_access;
 
-import function_layer.DAOException;
+import exceptions.DAOException;
 import function_layer.User;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -56,27 +56,27 @@ public class UserMapperTest {
     }
 
     @Test
-    public void testLogin01() throws DAOException {
+    public void testLogin01() throws DAOException, DataAccessException {
         // Can we log in
         User user = UserMapper.login( "jens@somewhere.com", "jensen" );
         assertTrue( user != null );
     }
 
     @Test( expected = DAOException.class )
-    public void testLogin02() throws DAOException {
+    public void testLogin02() throws DAOException, DataAccessException {
         // We should get an exception if we use the wrong password
         User user = UserMapper.login( "jens@somewhere.com", "larsen" );
     }
 
     @Test
-    public void testLogin03() throws DAOException {
+    public void testLogin03() throws DAOException, DataAccessException {
         // Jens is supposed to be a customer
         User user = UserMapper.login( "jens@somewhere.com", "jensen" );
         assertEquals( "customer", user.getRole() );
     }
 
     @Test
-    public void testCreateUser01() throws DAOException {
+    public void testCreateUser01() throws DAOException, DataAccessException {
         // Can we create a new user - Notice, if login fails, this will fail
         // but so would login01, so this is OK
         User original = new User( "king@kong.com", "uhahvorhemmeligt", "konge" );

@@ -2,4 +2,4 @@
 <br>
 <hr>
 
-<a href="<%=request.getContextPath()%>/index.jsp">Home</a>
+<a type="button" class="btn btn-dark" href="<%=request.getContextPath()%>/index.jsp">Home</a>
