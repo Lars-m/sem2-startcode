@@ -62,7 +62,7 @@ public class AuthorizationFilter implements Filter {
     private void handleIllegalAccess(HttpServletRequest req, HttpServletResponse res, String msg,int errCode) throws IOException, ServletException {
         if (FAIL_STRATEGY == FailingStrategy.REDIRECT_TO_LOGIN) {
             req.setAttribute("loginerror",msg);
-            req.getRequestDispatcher("/WEB-INF/" +"loginpage.jsp").forward(req, res);
+            req.getRequestDispatcher("/WEB-INF/loginpage.jsp").forward(req, res);
         } else {
             res.sendError(errCode);
         }

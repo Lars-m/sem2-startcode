@@ -10,8 +10,15 @@ import java.sql.Statement;
 
 public class UserMapper {
 
+    //These values are defined here, since they influence SECURITY
+    //Change this to a reasonable value for a REAL-LIFE project
+    public static final int MIN_PASSWORD_LENGTH = 4;
+    public static final int MIN_EMAIL_LENGTH = 6;
+
     public static void createUser( User user ) throws DAOException {
+
         try {
+            validateUserInputs(user.getPassword(), user.getEmail());
             Connection con = Connector.connection();
             String SQL = "INSERT INTO Users (email, password, role) VALUES (?, ?, ?)";
             PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
@@ -29,6 +36,7 @@ public class UserMapper {
     }
 
     public static User login( String email, String password ) throws DAOException, DataAccessException {
+        validateUserInputs(password,email);
         try {
             Connection con = Connector.connection();
             String SQL = "SELECT id, role FROM Users "
@@ -49,6 +57,14 @@ public class UserMapper {
         } catch ( ClassNotFoundException | SQLException ex ) {
             ex.printStackTrace();
             throw new DataAccessException(ex.getMessage());
+        }
+    }
+
+    private static void validateUserInputs(String password, String email) throws DAOException {
+        if((password==null ||password.length()< MIN_PASSWORD_LENGTH) ||
+           (email==null || email.length()< MIN_EMAIL_LENGTH))
+        {
+            throw new DAOException("Either password or user name does not obey rules for min length");
         }
     }
 

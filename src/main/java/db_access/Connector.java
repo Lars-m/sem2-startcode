@@ -14,7 +14,6 @@ public class Connector {
     private static String URL;
     private static String USERNAME;
     private static String PASSWORD;
-
     private static Connection singleton;
 
     public static void setConnection( Connection con ) {
@@ -33,7 +32,7 @@ public class Connector {
     public static void setDBCredentials() {
         String deployed = System.getenv("DEPLOYED");
         if (deployed != null){
-            // Prod: hent variabler fra setenv.sh i Tomcats bin folder
+            // Production: Get variable from setenv.sh in Tomcats bin folder
             URL = System.getenv("JDBC_CONNECTION_STRING");
             USERNAME = System.getenv("JDBC_USER");
             PASSWORD = System.getenv("JDBC_PASSWORD");
