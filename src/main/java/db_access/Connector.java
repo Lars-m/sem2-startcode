@@ -37,7 +37,7 @@ public class Connector {
             USERNAME = System.getenv("JDBC_USER");
             PASSWORD = System.getenv("JDBC_PASSWORD");
         } else {
-            // Localhost
+            // Development on localhost
             URL = "jdbc:mysql://localhost:3306/useradmin?serverTimezone=CET&useSSL=false";
             USERNAME = "dev";
             PASSWORD = "ax2";

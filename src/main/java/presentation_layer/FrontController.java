@@ -6,6 +6,8 @@
 package presentation_layer;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +26,10 @@ public class FrontController extends HttpServlet {
 
             Command action = Command.fromPath(request);
 
+
             String view = action.execute(request, response);
+            Logger l = Logger.getLogger("presentation.layer");
+
 
             if (view.startsWith(Command.REDIRECT_INDICATOR)) {
                 String page = view.substring(Command.REDIRECT_INDICATOR.length());
@@ -37,7 +42,7 @@ public class FrontController extends HttpServlet {
             }
             request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
         } catch (Exception ex) {
-            ex.printStackTrace();  //Todo: add a real logging framework
+            Logger.getLogger("presentation_layer").log(Level.SEVERE,ex.getMessage(),ex);
             throw ex;
         }
     }

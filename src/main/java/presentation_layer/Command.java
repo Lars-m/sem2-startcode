@@ -26,14 +26,6 @@ public abstract class Command {
         commands.put("customerpage", new ProtectedPageCommand("customerpage", "customer"));
     }
 
-    static Command from(HttpServletRequest request) {
-        String targetName = request.getParameter("target");
-        if (commands == null) {
-            initCommands();
-        }
-        return commands.getOrDefault(targetName, new UnknownCommand(targetName));   // unknowncommand er default.
-    }
-
     public static Command fromPath(HttpServletRequest request) {
 
         String targetName = request.getPathInfo().replaceAll("^/+", "");
