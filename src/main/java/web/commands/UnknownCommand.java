@@ -1,4 +1,4 @@
-package presentation_layer;
+package web.commands;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +11,7 @@ public class UnknownCommand extends Command {
     }
 
     @Override
-    String execute( HttpServletRequest request, HttpServletResponse response )  {
+    public String execute( HttpServletRequest request, HttpServletResponse response )  {
         String msg = String.format("Unknown Command!   '%s'",unknownCommand);
         request.setAttribute("problem",msg);
         return Command.WAS_NOT_FOUND_COMMAND;

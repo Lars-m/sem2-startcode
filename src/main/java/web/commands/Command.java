@@ -1,16 +1,14 @@
-package presentation_layer;
+package web.commands;
 
 import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//abstract class Command {
 public abstract class Command {
 
     //Return a token string from the execute method to make a client side redirect, instead of a server side (forward) redirect
     public final static String REDIRECT_INDICATOR = "#*redirect*#_###_";
-
     public final static String WAS_NOT_FOUND_COMMAND ="404_NOT_FOUND";
 
     private static HashMap<String, Command> commands;
@@ -22,8 +20,8 @@ public abstract class Command {
         commands.put("logout", new LogoutCommand());
         commands.put("loginpage", new PageCommand("loginpage"));
         commands.put("registerpage", new PageCommand("registerpage"));
-        commands.put("employeepage", new ProtectedPageCommand("employeepage", "employee"));
         commands.put("customerpage", new ProtectedPageCommand("customerpage", "customer"));
+        commands.put("employeepage", new ProtectedPageCommand("employeepage", "employee"));
     }
 
     public static Command fromPath(HttpServletRequest request) {
@@ -36,7 +34,7 @@ public abstract class Command {
         return commands.getOrDefault(targetName, new UnknownCommand(targetName));   // unknowncommand er default.
     }
 
-    abstract String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException;
+    abstract public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException;
 
 
 }

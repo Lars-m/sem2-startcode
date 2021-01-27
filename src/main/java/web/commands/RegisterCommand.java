@@ -1,15 +1,15 @@
-package presentation_layer;
+package web.commands;
 
-import exceptions.ValidationException;
-import function_layer.LogicFacade;
-import function_layer.User;
+import business.exceptions.ValidationException;
+import business.services.LogicFacade;
+import business.services.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class RegisterCommand extends Command {
 
     @Override
-    String execute( HttpServletRequest request, HttpServletResponse response )  {
+    public String execute( HttpServletRequest request, HttpServletResponse response )  {
         String email = request.getParameter( "email" );
         String password1 = request.getParameter( "password1" );
         String password2 = request.getParameter( "password2" );

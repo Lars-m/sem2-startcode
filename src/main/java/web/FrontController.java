@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package presentation_layer;
+package web;
+
+import web.commands.Command;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -21,15 +23,12 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            request.setCharacterEncoding("UTF-8");
-            response.setCharacterEncoding("UTF-8");
+//            request.setCharacterEncoding("UTF-8");
+//            response.setCharacterEncoding("UTF-8");
 
             Command action = Command.fromPath(request);
 
-
             String view = action.execute(request, response);
-            Logger l = Logger.getLogger("presentation.layer");
-
 
             if (view.startsWith(Command.REDIRECT_INDICATOR)) {
                 String page = view.substring(Command.REDIRECT_INDICATOR.length());
@@ -42,7 +41,7 @@ public class FrontController extends HttpServlet {
             }
             request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
         } catch (Exception ex) {
-            Logger.getLogger("presentation_layer").log(Level.SEVERE,ex.getMessage(),ex);
+            Logger.getLogger("web").log(Level.SEVERE,ex.getMessage(),ex);
             throw ex;
         }
     }

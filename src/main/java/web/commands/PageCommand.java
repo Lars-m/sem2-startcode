@@ -1,4 +1,4 @@
-package presentation_layer;
+package web.commands;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
