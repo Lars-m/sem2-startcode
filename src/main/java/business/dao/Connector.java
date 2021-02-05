@@ -20,6 +20,7 @@ public class Connector {
         singleton = con;
     }
 
+    //TODO --> Is this the right way
     public static Connection connection() throws ClassNotFoundException, SQLException {
         if ((singleton == null) || singleton.isClosed()) {
             setDBCredentials();
@@ -38,7 +39,8 @@ public class Connector {
             PASSWORD = System.getenv("JDBC_PASSWORD");
         } else {
             // Development on localhost
-            URL = "jdbc:mysql://localhost:3306/useradmin?serverTimezone=CET&useSSL=false";
+            //URL = "jdbc:mysql://localhost:3306/useradmin?serverTimezone=CET&useSSL=false";
+            URL = "jdbc:mysql://localhost:3306/useradmin";
             USERNAME = "dev";
             PASSWORD = "ax2";
         }

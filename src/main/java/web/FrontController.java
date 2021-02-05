@@ -23,8 +23,6 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-//            request.setCharacterEncoding("UTF-8");
-//            response.setCharacterEncoding("UTF-8");
 
             Command action = Command.fromPath(request);
 
