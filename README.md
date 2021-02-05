@@ -6,4 +6,7 @@ Denne skabelon anvendes på 2. semester på datamatikeruddannelsen i Lyngby og p
 
 Her kan man beskrive hvad projektet består af og hvordan man kan installere det på localhost og på en produktionsserver.
 
+## Arkitektur - foreslået
+![alt text](architecture.JPG)
+
 
