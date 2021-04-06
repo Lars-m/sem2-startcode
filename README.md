@@ -1,12 +1,8 @@
-# Skabelon til Java webprojekter
+# Suggested startup seed for simple Java/Web-projects
+Meant for 2.semester at CPHBusiness.dk DAT
 
-Denne skabelon anvendes på 2. semester på datamatikeruddannelsen i Lyngby og på Bornholm. Den er baseret på et command pattern.
 
-## Dokumentation
-
-Her kan man beskrive hvad projektet består af og hvordan man kan installere det på localhost og på en produktionsserver.
-
-## Arkitektur - foreslået
+## Architecture used in this project
 ![alt text](architecture.JPG)
 
 
