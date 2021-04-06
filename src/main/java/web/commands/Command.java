@@ -35,5 +35,5 @@ public abstract class Command {
         }
         return commands.getOrDefault(targetName, new UnknownCommand(targetName));   // unknowncommand er default.
     }
-    abstract String execute(HttpServletRequest request, HttpServletResponse response) throws Exception;
+    public abstract String execute(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

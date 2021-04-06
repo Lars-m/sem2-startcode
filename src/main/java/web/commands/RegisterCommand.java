@@ -13,7 +13,7 @@ public class RegisterCommand extends PageCommand {
     }
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         String email = request.getParameter("email");
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");

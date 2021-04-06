@@ -9,7 +9,7 @@ public class PageCommand extends Command {
         this.pageToShow = pageToShow;
     }
 
-    String execute(HttpServletRequest request, HttpServletResponse response ) throws Exception {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         return pageToShow;
     }
 }

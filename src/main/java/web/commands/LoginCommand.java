@@ -16,7 +16,7 @@ public class LoginCommand extends PageCommand {
     }
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         try {
