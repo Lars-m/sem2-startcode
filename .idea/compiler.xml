@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="projektskabelon" options="-endorseddirs G:\data\sem2\ProjektskabelonV2\target/endorsed" />
+      <module name="projektskabelon" options="-endorseddirs G:\data\sem2\web-startcode-projects\sem2-startcode\target/endorsed" />
     </option>
   </component>
 </project>

@@ -4,7 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LogoutCommand extends Command {
+public class LogoutCommand extends PageCommand {
+    public LogoutCommand(String pageToShow) {
+        super(pageToShow);
+    }
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response)  {
@@ -12,8 +15,6 @@ public class LogoutCommand extends Command {
         if(session != null){
             session.invalidate();
         }
-        //String index = request.getContextPath()+"/index.jsp";
-        String index = request.getContextPath()+"/";
-        return "#*redirect*#_###_"+index;
+        return pageToShow;
     }
 }

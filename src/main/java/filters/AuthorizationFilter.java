@@ -46,7 +46,6 @@ public class AuthorizationFilter implements Filter {
                         handleIllegalAccess(req, res, "Attempt to call a resource you are not authorized to view ",403);
                         return;
                     }
-
                 }
             }
         }

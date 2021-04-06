@@ -1,9 +1,5 @@
--- noinspection SqlDialectInspectionForFile
-
--- noinspection SqlNoDataSourceInspectionForFile
 
 CREATE DATABASE  IF NOT EXISTS `useradmin`;
-
 
 USE `useradmin`;
 

@@ -4,7 +4,7 @@ import db_access.DataAccessException;
 import db_access.UserMapper;
 import exceptions.DAOException;
 
-public class LogicFacade {
+public class LoginFacade {
 
     public static User login( String email, String password ) throws DAOException, DataAccessException {
         return UserMapper.login( email, password );

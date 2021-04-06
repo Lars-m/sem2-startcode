@@ -14,7 +14,7 @@ public class UnknownCommand extends Command {
     String execute( HttpServletRequest request, HttpServletResponse response )  {
         String msg = String.format("Unknown Command!   '%s'",unknownCommand);
         request.setAttribute("problem",msg);
-        return Command.WAS_NOT_FOUND_COMMAND;
+        return Command.NOT_FOUND_COMMAND;
     }
 
 }

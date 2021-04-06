@@ -4,11 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- The purpose of Connector is to...
-
- @author kasper
- */
 public class Connector {
 
     private static String URL;

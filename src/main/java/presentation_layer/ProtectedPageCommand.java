@@ -3,11 +3,11 @@ package presentation_layer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ProtectedPageCommand extends Command {
+public class ProtectedPageCommand extends PageCommand {
     private String role;
-    private String pageToShow;
+
     public ProtectedPageCommand(String pageToShow, String role) {
-        this.pageToShow = pageToShow;
+        super(pageToShow);
         this.role = role;
     }
 
