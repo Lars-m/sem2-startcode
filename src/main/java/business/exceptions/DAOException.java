@@ -1,4 +1,4 @@
-package exceptions;
+package business.exceptions;
 
 
 public class DAOException extends Exception {

@@ -1,4 +1,4 @@
-package presentation_layer;
+package web.commands;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +10,7 @@ public class LogoutCommand extends PageCommand {
     }
 
     @Override
-    String execute(HttpServletRequest request, HttpServletResponse response)  {
+    public String execute(HttpServletRequest request, HttpServletResponse response)  {
         HttpSession session = request.getSession(false);
         if(session != null){
             session.invalidate();

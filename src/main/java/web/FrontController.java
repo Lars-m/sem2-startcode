@@ -1,6 +1,10 @@
-package presentation_layer;
+package web;
+
+import web.commands.Command;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +18,6 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            request.setCharacterEncoding("UTF-8");
-            response.setCharacterEncoding("UTF-8");
 
             Command action = Command.fromPath(request);
 
@@ -38,6 +40,7 @@ public class FrontController extends HttpServlet {
             }
             request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
         } catch (Exception ex) {
+            Logger.getLogger("web").log(Level.SEVERE,ex.getMessage(),ex);
             ex.printStackTrace();  //Todo: add a real logging framework
             throw new ServletException(ex.getCause());
         }

@@ -1,11 +1,10 @@
-package presentation_layer;
+package web.commands;
 
-import db_access.DataAccessException;
-import exceptions.DAOException;
-import function_layer.LoginFacade;
-import function_layer.User;
+import business.dao.DataAccessException;
+import business.exceptions.DAOException;
+import business.services.LogicFacade;
+import business.services.User;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,7 +21,7 @@ public class LoginCommand extends PageCommand {
         String password = request.getParameter("password");
         try {
             System.out.println(String.format("Email: %1$s, Password: %2$s",email,password));
-            User user = LoginFacade.login(email, password);
+            User user = LogicFacade.login(email, password);
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("role", user.getRole());

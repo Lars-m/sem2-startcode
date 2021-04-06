@@ -1,10 +1,10 @@
-package function_layer;
+package business.services;
 
-import db_access.DataAccessException;
-import db_access.UserMapper;
-import exceptions.DAOException;
+import business.dao.DataAccessException;
+import business.dao.UserMapper;
+import business.exceptions.DAOException;
 
-public class LoginFacade {
+public class LogicFacade {
 
     public static User login( String email, String password ) throws DAOException, DataAccessException {
         return UserMapper.login( email, password );

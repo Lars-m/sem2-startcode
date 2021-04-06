@@ -1,9 +1,8 @@
-package presentation_layer;
+package web.commands;
 
-import exceptions.ValidationException;
-import function_layer.LoginFacade;
-import function_layer.User;
-
+import business.exceptions.ValidationException;
+import business.services.LogicFacade;
+import business.services.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,7 +19,7 @@ public class RegisterCommand extends PageCommand {
         String password2 = request.getParameter("password2");
         try {
             validateInputs(email, password1, password2);
-            User user = LoginFacade.createUser(email, password1);
+            User user = LogicFacade.createUser(email, password1);
             //Normal procedure seems to be,that after creating ourself, We  STILL need to login as a check
             return pageToShow + "?msg=You must login to use your new account";
         } catch (Exception e) {

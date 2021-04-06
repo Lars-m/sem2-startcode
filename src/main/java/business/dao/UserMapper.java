@@ -1,7 +1,7 @@
-package db_access;
+package business.dao;
 
-import exceptions.DAOException;
-import function_layer.User;
+import business.exceptions.DAOException;
+import business.services.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

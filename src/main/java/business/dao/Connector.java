@@ -1,4 +1,4 @@
-package db_access;
+package business.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,6 +15,7 @@ public class Connector {
         singleton = con;
     }
 
+    //TODO --> Is this the right way
     public static Connection connection() throws ClassNotFoundException, SQLException {
         if ((singleton == null) || singleton.isClosed()) {
             setDBCredentials();
@@ -32,8 +33,9 @@ public class Connector {
             USERNAME = System.getenv("JDBC_USER");
             PASSWORD = System.getenv("JDBC_PASSWORD");
         } else {
-            // Localhost
-            URL = "jdbc:mysql://localhost:3306/useradmin?serverTimezone=CET&useSSL=false";
+            // Development on localhost
+            //URL = "jdbc:mysql://localhost:3306/useradmin?serverTimezone=CET&useSSL=false";
+            URL = "jdbc:mysql://localhost:3306/useradmin";
             USERNAME = "dev";
             PASSWORD = "ax2";
         }
