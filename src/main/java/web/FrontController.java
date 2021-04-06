@@ -41,7 +41,6 @@ public class FrontController extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/" + view + ".jsp").forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger("web").log(Level.SEVERE,ex.getMessage(),ex);
-            ex.printStackTrace();  //Todo: add a real logging framework
             throw new ServletException(ex.getCause());
         }
     }
